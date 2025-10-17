@@ -1,0 +1,181 @@
+/* ------------------ RESET ------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+/* ------------------ LAYOUT ------------------ */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-container {
+  flex: 1; /* gura footer na dno */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  background: #f8f9fa;
+}
+
+/* ------------------ NAVBAR (HEADER) ------------------ */
+.navbar {
+  width: 100%;
+  background: #0077b6;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-icon {
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+}
+
+.logo-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: white;
+}
+
+.links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.link:hover {
+  color: #ffd166;
+}
+
+.logoutBtn {
+  background: #ef476f;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.logoutBtn:hover {
+  background: #d62828;
+}
+
+/* ------------------ FORME ------------------ */
+.form-container {
+  width: 100%;
+  max-width: 450px;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.form-title {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-card input,
+.form-card select,
+.form-card textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.form-card input:focus,
+.form-card select:focus,
+.form-card textarea:focus {
+  border-color: #0077b6;
+  box-shadow: 0 0 5px rgba(0, 119, 182, 0.4);
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  background: #0077b6;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #023e8a;
+}
+
+/* ------------------ PORUKE ------------------ */
+.poruka,
+.error {
+  margin-top: 15px;
+  font-size: 1rem;
+  text-align: center;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.poruka {
+  color: #06d6a0;
+  background: #e8f9f1;
+  border: 1px solid #06d6a0;
+}
+
+.error {
+  color: #d62828;
+  background: #ffe5e5;
+  border: 1px solid #d62828;
+}
+
+/* ------------------ FOOTER ------------------ */
+.footer {
+  background: #0077b6;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  font-size: 0.9rem;
+}
+
+.footer p {
+  margin: 0;
+}
