@@ -1,77 +1,135 @@
 
-## Auto Service Reservation Platform
+# Auto Service Reservation Platform
 
-Full-stack aplikacija za rezervaciju termina u auto servisima.  
-Omogućava korisnicima da lako zakažu termine, dok administratori mogu upravljati dostupnim slotovima putem admin panela.
+A full-stack web application for managing and booking auto service appointments.  
+The platform allows customers to easily schedule service slots, while administrators can manage availability, users, and system settings through a dedicated admin panel.
 
-## Funkcionalnosti
-- Registracija i prijava korisnika (JWT autentifikacija)  
-- Korisnički dashboard za rezervaciju termina  
-- Admin panel za dodavanje termina i upravljanje sistemom  
-- Zaštićene rute (samo admin ima pristup određenim funkcijama)  
-- MariaDB/MySQL baza podataka  
-- Prikaz i ažuriranje statusa termina u realnom vremenu
+---
 
-## Korištene tehnologije
-- **Frontend:** React, React Router, Axios, Bootstrap  
-- **Backend:** Express.js, Node.js, JWT, Bcrypt, CORS  
-- **Baza podataka:** MariaDB (kompatibilna sa MySQL)  
-- **Autentifikacija:** JSON Web Tokens (JWT)
+## 🚀 Features
 
-## Pokretanje projekta (lokalno):
-1. Klonirati repozitorijum (ili preuzeti kao ZIP)  
-2. Ući u `frontend` folder i instalirati zavisnosti:
-   
-   cd frontend
-   npm install
-   npm start
-   
-3. Ući u backend folder i instalirati zavisnosti:
+### 👤 User Features
+- User registration and login (JWT authentication)
+- User dashboard for viewing and booking available service slots
+- Real-time updates on appointment status
+- Booking cancellation and status tracking
 
-    cd backend
-    npm install
-    node server.js
-   
-4. Kreirati bazu podataka (MariaDB/MySQL) i importovati odgovarajuće tabele.
+### 🛠️ Admin Features
+- Admin-only protected routes
+- Create, edit, and delete available time slots
+- Manage reservations and system settings
+- Full CRUD operations over services and schedules
+- Real-time updates for bookings and slot availability
 
-Podešavanje .env fajla:
-Da bi backend pravilno radio, potrebno je kreirati .env fajl unutar backend foldera sa sljedećim sadržajem:
-JWT_SECRET=nekiSuperTajniKljuc
+### 🔧 System Features
+- REST API built with Express.js
+- MariaDB/MySQL relational database
+- Secure password hashing (bcrypt)
+- CORS protection and properly configured client–server communication
+- Modular full-stack architecture (React + Node.js)
+
+---
+
+## 🛑 Problem Encountered During Development (and Solution)
+
+During development, a recurring error appeared when attempting user registration:
+
+**"Registration error. Please try again."**
+
+After debugging using `Invoke-WebRequest` in PowerShell and reviewing backend logs, the issue was identified as **a CORS configuration problem**—the frontend client was not authorized to communicate with the backend API.
+
+### ✅ Solution  
+Explicit CORS configuration was added to `server.js`:
+
+```javascript
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
+
+app.use(cors(corsOptions));
+
+### 🧱 Tech Stack
+Frontend: React, React Router, Axios, Bootstrap, Backend.
+Backend: Node.js, Express.js, JSON Web Tokens (JWT), Bcrypt, CORS.
+
+### Database: MariaDB (fully compatible with MySQL)
+
+
+###📦 Local Setup
+1. Clone the repository
+git clone https://github.com/njanjahier/auto-service-reservation-platform.git
+
+2. Setup the Frontend
+cd frontend
+npm install
+npm start
+
+
+This will start the frontend on:
+http://localhost:3000
+
+3. Setup the Backend
+cd backend
+npm install
+node server.js
+
+
+Backend will run on your configured port (default: http://localhost:5000
+ or similar).
+
+###🗄️ Database Setup (MariaDB / MySQL)
+
+Create a database named:
+servis_rezervacije
+
+Import the SQL tables provided in the project.
+
+Ensure that your user has proper permissions (SELECT, INSERT, UPDATE, DELETE).
+
+###🔐 Environment Variables (.env)
+
+Create a .env file in the backend folder:
+
+JWT_SECRET=yourSuperSecretKey
 DB_HOST=127.0.0.1
 DB_USER=root
 DB_PASS=
 DB_NAME=servis_rezervacije
 CORS_ORIGIN=http://localhost:3000
 
-- .env fajl se ne postavlja na GitHub — on treba da bude u .gitignore fajlu.
 
-## Problem i rješenje
-Tokom razvoja pojavio se problem sa registracijom korisnika, gdje se prilikom slanja podataka iz React forme vraćala greška:
+⚠️ Do NOT upload .env to GitHub.
+It must be added to .gitignore.
 
-"Greška pri registraciji. Pokušajte ponovo."
+### 🖼️ Screenshots
 
-Nakon testiranja zahtjeva putem Invoke-WebRequest u PowerShell-u i provjere server logova, otkriveno je da je problem bio u komunikaciji fronta i backa (CORS podešavanja).
+All screenshots of the application UI can be found in the folder:
 
-Rješenje: dodata je eksplicitna CORS konfiguracija u server.js:
-
-
-const corsOptions = {
-  origin: 'http://localhost:3000',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true,
-  optionsSuccessStatus: 204
-};
-app.use(cors(corsOptions));
-
-Nakon toga — registracija je radila ispravno.
-
-Izgled aplikacije:Screenshotovi se nalaze u folderu screenshots unutar root projekta.
-
-Napomena o bazi:
-Aplikacija koristi MariaDB, ali je potpuno kompatibilna i sa MySQL bazom podataka.
-Tabela korisnici koristi kolone za ime, prezime, email, lozinku i ulogu (user/admin), dok tabela termini čuva sve dostupne i rezervisane termine.
+/screenshots
 
 
-Autor: Sanja Savić
-      2025.godina
+Add them to the README if you want a visually appealing presentation (recommended).
+
+### 💾 Database Notes
+
+MariaDB is used, but the application is fully compatible with MySQL.
+
+Users table stores:
+first_name, last_name, email, password_hash, role (user/admin)
+
+Appointments table stores:
+date, time, status, user_id, and system-assigned metadata.
+
+### 📅 Future Improvements (Roadmap)
+
+- Email/SMS notifications for reservation reminders
+- Token refresh logic (silent token renewal)
+- Admin dashboard analytics (daily/weekly appointment metrics)
+- Workshop multi-location support
+- Role-based access control (RBAC) with multiple admin levels
+- Dockerization and deployment pipeline
+- Unit and integration test coverage (Jest / Supertest)
 
