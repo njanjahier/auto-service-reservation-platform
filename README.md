@@ -112,7 +112,6 @@ All screenshots of the application UI can be found in the folder:
 /screenshots
 
 
-Add them to the README if you want a visually appealing presentation (recommended).
 
 ### 💾 Database Notes
 
