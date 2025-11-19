@@ -50,6 +50,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+```
 
 ### 🧱 Tech Stack
 Frontend: React, React Router, Axios, Bootstrap, Backend.
@@ -58,7 +59,7 @@ Backend: Node.js, Express.js, JSON Web Tokens (JWT), Bcrypt, CORS.
 ### Database: MariaDB (fully compatible with MySQL)
 
 
-###📦 Local Setup
+### 📦 Local Setup
 1. Clone the repository
 git clone https://github.com/njanjahier/auto-service-reservation-platform.git
 
@@ -80,7 +81,7 @@ node server.js
 Backend will run on your configured port (default: http://localhost:5000
  or similar).
 
-###🗄️ Database Setup (MariaDB / MySQL)
+### 🗄️ Database Setup (MariaDB / MySQL)
 
 Create a database named:
 servis_rezervacije
@@ -89,7 +90,7 @@ Import the SQL tables provided in the project.
 
 Ensure that your user has proper permissions (SELECT, INSERT, UPDATE, DELETE).
 
-###🔐 Environment Variables (.env)
+### 🔐 Environment Variables (.env)
 
 Create a .env file in the backend folder:
 
